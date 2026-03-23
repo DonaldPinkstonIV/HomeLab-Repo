@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Use command substitution to count number of files in ~/dotfiles/
+# Description: Display dotfiles information
+
+
+dotfiles_dir="$HOME/dotfiles"
+file_count=$(find "$dotfiles_dir" | wc -l)
+today=$(date +%Y-%m-%d)
+
+echo "=== Dotfiles Info ==="
+echo "User: $USER"
+echo "Dotfiles location: $dotfiles_dir"
+echo "Files tracked: $file_count"
+echo "Date: $today"
+
+# file_count=$(find "$HOME/dotfiles" | wc -l)
+# echo "Hello $USER, the number of files in the dotfile folder is: $file_count."

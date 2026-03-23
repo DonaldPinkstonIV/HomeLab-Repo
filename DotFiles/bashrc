@@ -1,0 +1,30 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias k='kubectl --color=auto'
+alias kgp='kubectl get pods --color=auto'
+PS1='[\u@\h \W]\$ '
+eval "$(starship init bash)"
+export PATH="$HOME/.local/bin:$PATH"
+
+source /etc/bash_completion # not needed on macOS
+
+source <(kubectl completion bash)
+
+complete -o default -F __start_kubectl k
+
+eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.keys/ubuntu-server)
+
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [ ! -f "$SSH_AUTH_SOCK" ]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+export PATH=$PATH:/home/gunnerfox/.local/bin
