@@ -1,0 +1,6 @@
+services:
+  homelabrepo:
+    image: homelabrepo
+    build:
+      context: .
+      dockerfile: ./Dockerfile
