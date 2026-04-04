@@ -1,4 +1,5 @@
 {
+    "version": "0.2.0",
     "configurations": [
         {
             "name": "Containers: Python - General",
@@ -14,6 +15,21 @@
                 ],
                 "projectType": "general"
             }
+        },
+        {
+            "name": "Python: Attach (Remote Debug)",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/app"
+                }
+            ]
         }
     ]
 }
